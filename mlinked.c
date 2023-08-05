@@ -5,8 +5,11 @@ struct slinklist
  int data; 
  struct slinklist *next;
 }; 
+//the above code defines structure with one space for the data and another space to store a pointer
 typedef struct slinklist node; 
+//the typedef declares that structrure as a pointer
 node *start = NULL; 
+//creats a pointer start which points towords node data type
 int menu() 
 { 
  int ch;
@@ -31,15 +34,20 @@ printf("\n\n Enter your choice: ");
  scanf("%d",&ch); 
  return ch; 
 } 
+//giving users options to perform node operations
+
 node* getnode() 
 { 
  node * newnode; 
-newnode = (node *) malloc(sizeof(node)); 
+ //creating a pointer newnode
+newnode = (node *) malloc(sizeof(node));
+//creating a node with 
 printf("\n Enter data: "); 
 scanf("%d", &newnode -> data); 
 newnode -> next = NULL; 
  return newnode; 
-} 
+}
+ //node* is the pointer variable which defines return type of a functuion
 int countnode(node *ptr)
 { 
  int count=0;
