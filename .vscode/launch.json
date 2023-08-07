@@ -6,10 +6,10 @@
       "type": "cppdbg",
       "request": "launch",
       "args": [],
-      "stopAtEntry": true,
+      "stopAtEntry": false,
       "externalConsole": true,
       "cwd": "c:/Users/mshas/Desktop/A/Cprograms",
-      "program": "c:/Users/mshas/Desktop/A/Cprograms/a.exe",
+      "program": "c:/Users/mshas/Desktop/A/Cprograms/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
