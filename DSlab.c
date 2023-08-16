@@ -695,7 +695,7 @@ output = queue is empty
 #define QUEUE_SIZE 4
 
 int queue[QUEUE_SIZE];
-int front = 0, rear = 0;
+int front = rear = -1;
 
 void enqueue(int);
 void dequeue();
@@ -1533,7 +1533,7 @@ void insert();
 void delete();
 void display();
 void search();
-void reverse(struct node *);
+int reverse(struct node *);
 int c = 0, b = 0;
 
 int main()
