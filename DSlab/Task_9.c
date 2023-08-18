@@ -201,11 +201,11 @@ void enqueue(int element)
 }
 int dequeue()
 {
-    int element;
+    int element;  
     struct node *deleted = head;
     c--;
     element = deleted->data;
-    head = deleted->next;
+    head = deleted-  >next;
     free(deleted);
     return element;
 }
