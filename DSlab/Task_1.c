@@ -182,7 +182,7 @@ Sorted List
 
 #include <stdio.h>
 
-void insertionSort(int n, int a[]);
+void  insertionSort(int n, int a[]);
 
 void main()
 {

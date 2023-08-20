@@ -84,7 +84,7 @@ int pop()
 }
 void display()
 {
-    struct node *display = (struct node *)malloc(sizeof(struct node));
+    struct node *display;
     display = head;
     while (display != NULL)
     {

@@ -21,8 +21,9 @@ Sorted List
 */
 // Start writing program from here
 
-#include <stdio.h>
-void quickSort(int[], int, int);
+#include<stdio.h>
+
+void quickSort(int [], int ,int);
 
 int main()
 {
@@ -47,37 +48,36 @@ int main()
     }
     return 0;
 }
+
 void quickSort(int a[], int left, int right)
 {
-    int pivot, t, i, j, l, r, temp;
-    if (left < right)
+    int pivot,l,j,temp;
+    if(left < right)
     {
         pivot = a[left];
         l = left;
-        r = right;
-        while (l < r)
-        {
-            while (a[i] <= pivot && i < right)
+        j = right;
+        while(l<j){
+            while((a[l] <= pivot) && (l < right)){
                 l++;
-            while (a[r] > pivot)
-                r--;
-            if (l < r)
-            {
-                t = a[l];
-                a[l] = a[r];
-                a[r] = t;
+            while(a[j] >pivot)
+                j++;
+                if(l<j)
+                {
+                temp = a[j];
+                a[j] = a[j+1];
+                a[j+1] = temp;    
+                }
             }
+            temp = a[l];
+            a[l] = a[j];
+            a[j] = temp;
+
+            quickSort(a,left,j-1);
+            quickSort(a,j+1,right);
         }
-
-        temp = a[left];
-        a[left] = a[r];
-        a[r] = temp;
-
-        quickSort(a, left, r - 1);
-        quickSort(a, r + 1, right);
     }
-
-} 
+}
 ///////////////////////////////////////////////
 ///////////////////////////////////////////////
 ///////////////////////////////////////////////
