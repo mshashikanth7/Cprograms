@@ -57,7 +57,8 @@ void quickSort(int a[], int left, int right)
         pivot = a[left];
         l = left;
         j = right;
-        while(l<j){
+        while(l<j)
+        {
             while((a[l] <= pivot) && (l < right)){
                 l++;
             while(a[j] >pivot)
@@ -113,98 +114,63 @@ void quickSort(int a[], int left, int right)
  */
 // Start writing program from here
 #include <stdio.h>
-void mergeSort(int[], int, int);
-void merge(int[], int, int, int);
-
+void mergesort(int a[], int, int);
+void merge(int a[], int, int, int);
+int x;
 int main()
 {
-    int a[10], n;
+    int a[10], i, n;
+    // printf("enter n");
     scanf("%d", &n);
-    for (int i = 0; i < n; i++)
-    {
+    // printf("enter");
+    x = n;
+    for (i = 0; i < n; i++)
         scanf("%d", &a[i]);
-    }
-    printf("Unsorted List\n");
-    for (int j = 0; j < n; j++)
-    {
-        printf("%d\t", a[j]);
-    }
-    printf("\nMERGE SORT\n");
-    mergeSort(a, 0, n - 1);
+    printf("THE  UNSORTED LIST\n");
+    for (i = 0; i < n; i++)
+        printf("%5d", a[i]);
 
-    printf("Sorted List\n");
+    mergesort(a, 0, n - 1);
 
-    for (int i = 0; i < n; i++)
-    {
-        printf("%d\t", a[i]);
-    }
-
-    return 0;
+    printf("\nTHE  SORTED LIST - MERGE SORT\n");
+    for (i = 0; i < n; i++)
+        printf("%5d", a[i]);
 }
-void mergeSort(int a[], int l, int r)
+void mergesort(int a[], int low, int high)
 {
-
-    if (l < r)
+    int mid, i;
+    if (low < high) // 0<7   0<3   0<1
     {
+        mid = (low + high) / 2; // 3   1   0
 
-        // mid = l + ((r-l)/2);
-        int mid = (l + r) / 2;
-
-        mergeSort(a, l, mid);
-        mergeSort(a, mid + 1, r);
-
-        merge(a, l, mid, r);
+        mergesort(a, low, mid);      //(a,0,3)    (a,0,1)   (a,0,0)  // calling
+        mergesort(a, mid + 1, high); //(a,4,7)   (a,2,3)   (a,1,1)//store
+        merge(a, low, mid, high);    //(a,0,0,0)
+        printf("\nPASS -");
+        for (i = 0; i < x; i++)
+            printf("%d\t", a[i]);
     }
 }
-
-void merge(int a[], int l, int mid, int r)
+void merge(int a[], int low, int mid, int high)
 {
-    int i, j, k;
-    int n1 = mid - l + 1;
-    int n2 = r - mid;
-
-    int L[n1], R[n2];
-
-    for (i = 0; i < n1; i++)
+    int b[10], h, i, j, k;
+    i = low;     // 0
+    j = mid + 1; // 1
+    k = low;     // 0
+    while (i <= mid && j <= high)
     {
-        L[i] = a[l + i];
-    }
-    for (j = 0; j < n2; j++)
-    {
-        R[j] = a[mid + 1 + j];
-    }
-    i = 0;
-    j = 0;
-    k = l;
-
-    while (i < n1 && j < n2)
-    {
-        if (L[i] <= R[j])
-        {
-            a[k] = L[i];
-            i++;
-        }
+        if (a[i] < a[j])
+            b[k++] = a[i++];
         else
-        {
-            a[k] = R[j];
-            j++;
-        }
-        k++;
+            b[k++] = a[j++];
     }
+    while (i <= mid)
+        b[k++] = a[i++];
+    while (j <= high)
+        b[k++] = a[j++];
 
-    while (i < n1)
-    {
-        a[k] = L[i];
-        i++;
-        k++;
-    }
-
-    while (j < n2)
-    {
-        a[k] = R[j];
-        j++;
-        k++;
-    }
+    for (i = low; i <= high; i++)
+        a[i] = b[i];
 }
 ///////////////////////////////////////////////
 ///////////////////////////////////////////////
